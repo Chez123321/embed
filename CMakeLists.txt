@@ -4,8 +4,8 @@ project(embed C CXX)
 
 add_executable(bin2c "src/bin2c.c")
 
-set(include_dir "${CMAKE_CURRENT_SOURCE_DIR}/include")
-set(src_dir "${CMAKE_CURRENT_SOURCE_DIR}/src")
+set(include_dir "${CMAKE_CURRENT_SOURCE_DIR}/include" CACHE INTERNAL "Include directory")
+set(src_dir "${CMAKE_CURRENT_SOURCE_DIR}/src" CACHE INTERNAL "Source directory")
 
 function(embed target)
     target_include_directories(${target} PRIVATE "${include_dir}")
