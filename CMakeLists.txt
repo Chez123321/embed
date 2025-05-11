@@ -47,11 +47,11 @@ function(embed target)
         list(APPEND EXTERNS "extern \"C\" const unsigned char ${ident}[];")
         list(APPEND EXTERNS "extern \"C\" const size_t ${ident}_size;")
 
-        string(APPEND MAP "\t\t{\"${item}\", File(${ident}, ${ident}_size)},\n")
+        string(APPEND MAP "\t\t\t{\"${item}\", File(${ident}, ${ident}_size)},\n")
     endforeach()
 
     string(REPLACE ";;" ";\n" EXTERNS "${EXTERNS}")
-    string(APPEND MAP "\t};")
+    string(APPEND MAP "\t\t};")
 
     configure_file("${src_dir}/embed.cpp.in" "${CMAKE_CURRENT_BINARY_DIR}/embed.cpp" @ONLY)
     target_sources(${target} PRIVATE "${CMAKE_CURRENT_BINARY_DIR}/embed.cpp")

@@ -5,9 +5,10 @@
 @EXTERNS@
 
 namespace embed {
-    static std::unordered_map<std::string, File> map = @MAP@
 
     File get(const std::string& path) {
+        static std::unordered_map<std::string, File> map = @MAP@
+        
         auto it = map.find(path);
         if (it != map.end()) {
             return it->second;
