@@ -23,6 +23,10 @@ function(embed target)
 
             string(MAKE_C_IDENTIFIER ${item} ident)
 
+            set(item_dir "")
+            cmake_path(GET item PARENT_PATH item_dir)
+            file(MAKE_DIRECTORY "${CMAKE_CURRENT_BINARY_DIR}/${item_dir}")
+
             add_custom_command(
                 OUTPUT "${CMAKE_CURRENT_BINARY_DIR}/${item}.c"
                 DEPENDS bin2c "${item}"
